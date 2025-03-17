@@ -12,7 +12,6 @@ SCRIPTS_ROOT="$(cd "$(dirname "$0")" && pwd)"
 . "$SCRIPTS_ROOT/container_clear.sh" /
 
 # 清空iptables
-echo "清空iptables"
 . "$SCRIPTS_ROOT/iptables_clear.sh" 
 
 # 删除相关进程

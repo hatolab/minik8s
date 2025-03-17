@@ -88,13 +88,20 @@ else
     sudo apt-get update
     sudo apt-get install rabbitmq-server -y
     echo "RabbitMQ安装完成"
-
     # 设置RabbitMQ开机自动启动
     sudo systemctl enable rabbitmq-server
+    # 创建 用户及密码
+    sudo rabbitmqctl add_user admin admin
+    # 设置 用户权限
+    sudo rabbitmqctl set_permissions -p / admin ".*" ".*" ".*"
+    # 设置 用户角色
+    sudo rabbitmqctl set_user_tags admin administrator
+    echo "RabbitMQ管理员用户/密码/权限/角色已设置"
 fi
 # 启动RabbitMQ服务
 sudo systemctl start rabbitmq-server
 echo "RabbitMQ已安装并设置开机启动"
+
 
 
 ### 检查Docker是否已经安装
@@ -162,8 +169,6 @@ else
     echo "Weave未安装，开始安装..."
     # 启动安装脚本
     . "$SCRIPTS_ROOT/weave.sh" /
-    # 配置宿主机Weave IP
-    weave expose
     echo "Weave安装完成"
 fi
 

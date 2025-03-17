@@ -11,6 +11,7 @@ programs=(
 )
 
 # 遍历进程列表，逐个杀死进程
+echo "进程清除开始"
 for program in "${programs[@]}"
 do
     # 提取进程名
@@ -25,3 +26,4 @@ do
         echo "Process for program $program_name not found"
     fi
 done
+echo "进程清除结束"

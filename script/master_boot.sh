@@ -13,6 +13,10 @@ cd $PROJECT_ROOT
 
 mkdir -p log
 
+# 配置宿主机Weave IP
+weave expose
+echo "宿主机Weave IP已配置"
+
 # 定义启动的程序列表，每个元素对应一个 main.go 文件和日志文件路径
 programs=(
     "./pkg/apiserver/main/main.go:./log/apiserver.log"

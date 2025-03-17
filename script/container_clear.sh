@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "删除所有容器...(除了weave组件)"
+echo "删除所有容器(除了weave组件)开始"
 # 获取当前机器上的所有容器ID
 container_ids=$(docker ps -a -q)
 
@@ -15,3 +15,5 @@ do
         echo "跳过容器 $name ..."
     fi
 done
+
+echo "删除所有容器(除了weave组件)完成"
