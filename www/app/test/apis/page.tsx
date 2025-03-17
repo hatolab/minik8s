@@ -6,6 +6,6 @@ export default function Page() {
   const { data, error, isLoading } = useSWR(get.nodes, fetcher)
   if (error) return 'An error has occurred.' + get.nodes
   if (isLoading) return 'Loading...'
-  console.log(data)
+  console.log(data.data)
   return <div>ok</div>
 }
