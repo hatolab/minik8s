@@ -5,7 +5,7 @@ import "strconv"
 const (
 	IP_PREFIX_LENGTH      = 32
 	Local_Server_IP       = "127.0.0.1"
-	Cluster_Master_IP     = "192.168.1.5"
+	Cluster_Master_IP     = "192.168.182.131"
 	API_Server_Port       = 8090
 	Serveless_Server_Port = 28080
 	API_Server_Scheme     = "http://"

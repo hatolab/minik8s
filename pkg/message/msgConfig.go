@@ -29,8 +29,8 @@ type MsgConfig struct {
 // 默认的配置是连接本地的RabbitMQ服务器，使用Guest账号
 func DefaultMsgConfig() *MsgConfig {
 	config := MsgConfig{
-		User:     "guest",
-		Password: "guest",
+		User:     "admin",
+		Password: "admin",
 		Host:     config.GetMasterIP(),
 		Port:     5672,
 		VHost:    "/",
