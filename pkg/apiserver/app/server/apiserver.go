@@ -9,6 +9,7 @@ import (
 	"miniK8s/pkg/k8log"
 	"miniK8s/pkg/listwatcher"
 	"github.com/gin-gonic/gin"
+	"github.com/gin-contrib/cors"
 )
 
 type ApiServer interface {
@@ -44,6 +45,7 @@ type ResponseData struct {
 }
 
 func (s *apiServer) Run() {
+	// log
 	k8log.InfoLog("APIServer", "Starting api server")
 	if s.ifDebug {
 		gin.SetMode(gin.DebugMode)
@@ -52,10 +54,13 @@ func (s *apiServer) Run() {
 		gin.SetMode(gin.ReleaseMode)
 		k8log.InfoLog("APIServer", "Debug mode is off, release mode is on")
 	}
-
+	// cors
+	s.router.Use(cors.Default())
+    // bind
 	s.bind()
-	runAddr := s.listenIP + ":" + fmt.Sprint(s.port)
-	k8log.InfoLog("APIServer", "Listening on "+runAddr)
+	// log
+	k8log.InfoLog("APIServer", "Listening on " + s.listenIP + ":" + fmt.Sprint(s.port))
+	// run
 	s.router.Run("0.0.0.0:" + fmt.Sprint(s.port))
 }
 
